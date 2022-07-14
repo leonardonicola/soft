@@ -1,4 +1,8 @@
 import { createApp } from 'vue'
 import App from './App.vue'
+import VuePrlx from 'vue-prlx'
 
-createApp(App).mount('#app')
+const app = createApp(App);
+app.use(VuePrlx);
+
+app.mount("#app");
