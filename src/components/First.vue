@@ -22,10 +22,12 @@ components: {
 
 <style>
     #first{
-        display: flex;
+        display: grid;
+        grid-template-columns: 1fr 1fr;
         grid-column-start: 1;
-        grid-column-end: 4;
+        grid-column-end: 3;
         justify-content: space-between;
+        flex-wrap: wrap;
         padding: 80px 50px 30px 50px;
         background-color: rgba(253, 240, 231, 0.664);
     }
@@ -43,6 +45,18 @@ components: {
         padding: 0 35px;
     }
 
+
+    @media screen and (max-width:950px) {
+        #first{
+            grid-template-columns: 1fr;
+        }
+    }
+
+    @media screen and (max-width:600px) {
+        #first img{
+            width: 100%;
+        }
+    }
     
 
 </style>

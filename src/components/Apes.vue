@@ -41,17 +41,12 @@ export default {
 <style>
     :root{
         --cardwidth: 350px;
-        --borderradius: 13px 13px 0 0;
-    }
-
-    #apes{
-        display: grid;
-        border-radius: 10px;
-        justify-items: center;
+        --borderradius: 13px;
     }
 
     .card{
         width: var(--cardwidth);
+        height: 450px;
         position:relative;
         box-shadow: 0 0 5px rgba(0, 0, 0, 0.096);
         border-radius: var(--borderradius);

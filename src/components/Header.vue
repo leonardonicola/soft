@@ -1,5 +1,5 @@
 <template >
-  <header>
+  <header id="header">
    <h1>Soft</h1>
     <div>
       <p @click="handleClick(titleOne)">{{titleOne}}</p>
@@ -25,24 +25,22 @@ export default {
 </script>
 
 <style>
-  header{
-    display: flex;
-    position:sticky;
-    box-sizing: border-box;
-    grid-column-start: 1;
-    grid-column-end: 4;
+  #header{
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr;
     padding:0 30px 0 30px;
-    justify-content: space-between;
     align-items: center;
   }
 
-  header > div{
+  #header > div{
     display: flex;
-    flex-direction: row;
+    grid-column-start: 3;
+    justify-content: end;
     gap: 20px;
   }
 
-  header > h1{
+  #header > h1{
     color: rgb(255, 102, 0);
   }
+
 </style>
