@@ -1,25 +1,28 @@
 <template>
     <div id="apes">
         <div class="card" @click="toggle = !toggle">
-            <img :src="require('@/assets/' + source + '')">
-            <h2>{{price}}</h2>
-            <p>{{local}}</p>
-            <p>{{desc}}</p>
+            <div class="card__img">
+                <img :src="require('@/assets/' + source + '')">
+            </div>
+            <div class="card__infos">
+                <h2>{{price}}</h2>
+                <p>{{local}}</p>
+                <p>{{desc}}</p>
+            </div>
         </div>
 
         <transition-group name="fade">
         <div v-if="toggle" class="popup" @click.self="toggle = !toggle">
-            <div class="popup-card">
-                <div id="popup-card-imgs">
-                    <img id="popup-card-1" :src="require('@/assets/' + alter + '')">
-                    <img id="popup-card-2" :src="require('@/assets/' + source + '')">
+            <div class="popup__card">
+                <div class="popup__card__imgs">
+                    <img class="popup__card__1" :src="require('@/assets/' + alter + '')">
+                    <img class="popup__card__2" :src="require('@/assets/' + source + '')">
                 </div>
-                <div id="popup-card-infos">
+                <div class="popup__card__infos">
                     <h4>Valor à vista</h4>
                     <h1>{{price}}</h1>
                     <h4>{{local}}</h4>
                     <button class="btn agendar" @click.self="toggle2 = !toggle2">Agendar visita</button>
-                    <button class="btn duvida" >Tirar dúvidas</button>
                     <h4><i>Agende sua visita gratuita e sem compromissos</i></h4>
                 </div>
             </div>
@@ -28,7 +31,7 @@
         
         <transition-group name="fade">
         <div v-if="toggle2" class="popup" @click.self="toggle2 = !toggle2">
-            <div class="popup-card p-agendar">
+            <div class="popup__card popup__card--agendar">
                 <h1>Soft</h1>
                 <h2>Pode entrar, a casa é sua</h2>
                 <h4>Vamos enviar um código de confirmação para continuarmos</h4>
@@ -58,48 +61,45 @@ export default {
 
 <style>
     :root{
-        --cardwidth: 350px;
         --borderradius: 13px;
         --orangesoft: rgb(228, 110, 0);
     }
 
-    .fade-enter-active,
-    .fade-leave-active {
-    transition: opacity 0.7s
-    }
-
-    .fade-enter,
-    .fade-leave-to
-
-    {
-    opacity: 0
+    #apes{
+        width: 100%;
+        height: fit-content;
     }
 
     .card{
-        width: var(--cardwidth);
+        display: grid;
+        grid-template-rows:50% 50%;
+        width: 100%;
         height: 450px;
-        position:relative;
-        box-shadow: 0 0 5px rgba(0, 0, 0, 0.096);
-        border-radius: var(--borderradius);
         overflow: hidden;
         background: linear-gradient(#ffffff, #ffffff 50%, rgba(255, 159, 95, 0.5) 50%,rgba(255, 159, 95, 0.5));
-        background-size: 100% 200%;
-        /*trasition effect for background*/
-        transition: all ease 1s;
+        box-shadow: 0 0 10px rgba(0, 0, 0, 0.082);
+        border: 0.5px solid rgba(0, 0, 0, 0.192);
+        border-radius: var(--borderradius);
+        background-size: 100% 205%;
+        transition: all ease 2s;
     }
     .card:hover{
         transform: scale(1.03);
-        background-position: 100% 35%;
+        background-position: 100% 80%;
     }
 
     .card h2,p{
         padding: 0 23px;
+
     }
 
-    .card > img{
-        width: var(--cardwidth);
-        height: 270px;
+    .card__img img{
+        height: 100%;
+        width: 100%;
+        object-fit: cover;
     }
+
+    /*POPUP */
 
     .popup{
         position:fixed;
@@ -108,54 +108,54 @@ export default {
         right: 0;
         bottom: 0;
         z-index: 99;
-        background-color: rgba(0, 0, 0, 0.418);
-
         display: flex;
         align-items: center;
         justify-content: center;
+        background-color: rgba(0, 0, 0, 0.418);
     }
 
-    .popup-card{
+    .popup__card{
         display: grid;
+        width: 75%;
+        height: 75%;
+        overflow: auto;
         grid-template-columns: 1fr 1fr;
         grid-template-rows: 1fr;
+        background-color:#ffffff ;
         border-radius: 13px;
-        overflow: hidden;
-        background-color:white ;
     }
 
-    #popup-card-imgs{
+    .popup__card__imgs{
         position: relative;
-        width: 600px;
-        height: 500px;
+        width: 100%;
+        height: 100%;
     }
 
-    #popup-card-imgs > img{
+    .popup__card__imgs img{
         position: absolute;
+        object-fit: cover;
         left: 0;
-        width: 600px;
-        height: 500px;
+        width: 100%;
+        height: 100%;
         transition: opacity 1s ease
     }
 
-    #popup-card-imgs #popup-card-2:hover{
+    .popup__card__imgs .popup__card__2:hover{
         opacity: 0;
     }
 
-    #popup-card-infos{
+    .popup__card__infos{
         padding: 30px;
     }
 
     .btn{
-        display: block;
-        text-decoration: none;
-        border: none;
-        border-radius: 7px;
+        margin: 10px 0;
         padding: 15px;
         width: 70%;
         text-align: center;
         font-size: 18px;
-        margin: 10px 0;
+        border-radius: 7px;
+        border: none;
         cursor: pointer;
         opacity: 0.8;
         transition: 0.5s ease;
@@ -166,39 +166,77 @@ export default {
     }
 
     .agendar{
-        color: white;
+        color: #ffffff;
         background-color: var(--orangesoft);
     }
 
     .duvida{
         border: 0.5px solid black;
-        background-color: white;
+        background-color: #ffffff;
     }
 
-    .p-agendar{
-        overflow: auto;
+    .popup__card--agendar{
         padding: 30px;
+        width: 400px;
+        overflow: hidden;
         grid-template-columns: 1fr;
-        grid-template-rows: 1fr 60px 80px 60px auto;
+        grid-template-rows: 100px 60px 80px 60px auto;
         border-radius: 30px;
         box-shadow: 0 0 20px 15px rgba(0, 0, 0, 0.068);
-        width: 30%;
     }
 
-    .p-agendar h1{
+    .popup__card--agendar h1{
         color: var(--orangesoft);
     }
 
-    .p-agendar input{
+    .popup__card--agendar input{
+        height: 45px;
+        padding: 15px;
         border-radius: 8px;
         border: 0.2px solid rgba(0, 0, 0, 0.226);
         opacity: 0.9;
-        height: 45px;
-        padding: 15px;
     }
 
-    .p-agendar input:focus{
+    .popup__card--agendar input:focus{
         outline: 0.8px solid rgba(0, 0, 0, 0.226);
         border: 0.5px solid rgba(0, 0, 0, 0.226);
+    }
+
+    @media screen and (max-width: 900px) {
+    
+        .popup__card{
+            grid-template-columns: 1fr;
+            grid-template-rows: 300px 1fr;
+        }
+        .popup__card--agendar{
+            width: 70%;
+            grid-template-rows: 100px 20% 20% 20%;
+        }
+    }
+
+    @media screen and (max-width: 500px) {
+
+        .popup__card{
+            grid-template-columns: 1fr;
+            grid-template-rows: 200px 1fr;
+        }
+
+        .popup__card--agendar{
+            width: 80%;
+            grid-template-rows: 100px 60px 80px 60px;
+        }
+    }
+
+    /*TRANSITIONS */
+    .fade-enter-active,
+    .fade-leave-active {
+    transition: opacity 0.7s
+    }
+
+    .fade-enter,
+    .fade-leave-to
+
+    {
+    opacity: 0
     }
 </style>
