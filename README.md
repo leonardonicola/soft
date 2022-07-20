@@ -1,5 +1,7 @@
 # soft
 
+<h3> Soft é um projeto de landing page focada em treinar habilidades com o Vue e mobile friendly!</h3>
+
 ## Project setup
 ```
 npm install
