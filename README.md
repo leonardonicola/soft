@@ -34,4 +34,4 @@ Feito com ❤️ por Leonardo Nicola 👋🏽 Entre em contato!
 [![Linkedin Badge](https://img.shields.io/badge/-Leonardo-blue?style=flat-square&logo=Linkedin&logoColor=white&link=https://www.linkedin.com/in/leonardonicola/)](https://www.linkedin.com/in/leonardonicola/) 
 [![Gmail Badge](https://img.shields.io/badge/-leonardonicolares@gmail.com-c14438?style=flat-square&logo=Gmail&logoColor=white&link=mailto:leonardonicolares@gmail.com)](mailto:leonardonicolares@gmail.com)
 
-<img src="https://img.shields.io/github/license/schmittzz/soft?style=plastic"/>
+<img src="https://img.shields.io/github/license/schmittzz/soft"/>
